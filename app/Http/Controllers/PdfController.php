@@ -420,7 +420,7 @@ class PdfController extends Controller
         $prep_data= [];
 
         $prep_data ['lang'] = $data->language;
-        $prep_data ['sking'] = $data->template_skin;
+        $prep_data ['skin'] = $data->template_skin;
        
         $translation = $data->translations;
         
