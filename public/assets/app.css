@@ -1,0 +1,168 @@
+*{
+    font-family: 'Helvetica';
+    font-size: 11px;
+    color: rgb(94, 94, 94);
+}
+.table-row{
+    min-height: 23px;
+    border: 1px solid #ccc;
+    border-left: 0;
+    padding-left: 5px;
+}
+.strip {
+    height: 40px;
+    background: #00BFBF;
+    width: 100% !important;
+    margin: 50px 0;
+}
+
+.h_report_title {
+    text-align: right;
+    font-size: 20px;
+    line-height: 30px;
+    color: #fff;
+    margin-top:-170px;
+}
+.logo img {
+    margin-top: -70px;
+    width:200px;
+    margin-left: 30px;
+}
+
+.info p {
+    text-align: right;
+    color: rgb(94, 94, 94);
+    margin: 0px;
+    font-size: 12px;
+}
+
+.meta-date{
+    font-weight: bold;
+}
+
+.summary-title, .details-title{
+    text-align: center;
+    font-size: 18px;
+    margin: 7px 0;
+}
+
+.class-7 {
+    text-align: center;
+    font-size: 28px;
+}
+
+
+
+.header {
+    background: rgb(245, 245, 245) !important;
+    text-align: center;
+
+}
+
+
+.custom-table{
+    width: 100%;
+    border: 1px solid lightgray !important;
+}
+
+.custom-table1{
+    width: 100%;
+    border: 1px solid #ccc !important;
+    overflow: hidden;
+    text-align: left;
+    
+}
+
+.custom-table9 {
+    width: 80% !important;
+    overflow: hidden;
+    text-align: left;
+}
+
+.custom-table1 .table-col{
+    width: 25%;
+    float: left ;
+}
+.custom-table1 *{
+    padding: 0;
+}
+.custom-table1 td{text-align: left;}
+
+.custom-table9{
+    width: 100%;
+    border: 0 !important;
+}
+
+.bg-gray{
+    background-color: rgb(245, 245, 245);
+}
+
+
+.tbody {
+    text-align: center;
+}
+
+td {
+    border-bottom: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+    padding-top:5px ;
+    padding-bottom:5px ;
+}
+
+.col1 {
+    width: 20%;
+    padding: 4px;
+}
+.col2 {
+    width: 15%;
+}
+.col3 {
+    width: 50%;
+}
+
+.row1 {
+    height: 40px;
+}
+.row {
+    width: 100% !important;
+}
+.h23 {
+    height: 15px !important;
+}
+
+.page-break {
+    page-break-after: always;
+}
+
+.bgwhite {
+    background-color: white;
+    padding-left: 3px !important;
+
+}
+
+.bggray {
+    background-color: rgb(245, 245, 245);;
+    padding-left: 2px !important;
+
+}
+
+@page {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.bg-image{
+    vertical-align: top !important;
+    background-size: 100%  100% !important;
+    background-repeat: no-repeat !important;
+    background-position:center center !important;;
+}
+
+.tbl9img {
+    height: 110px;
+    width: 80px;
+}
+
+.tbl9text {
+    font-size: 28px;
+}
