@@ -25,6 +25,7 @@ class PdfController extends Controller
 
     public function generatepdf(Request $request)
     {
+        
         $file = '{
             "client_id": "47",
             "template_name": "trademark_checkup_report",
@@ -411,7 +412,8 @@ class PdfController extends Controller
         $canvas = $pdf->getDomPDF()->getCanvas();
         $height = $canvas->get_height();
         $width = $canvas->get_width();
-        return $pdf->stream('report.pdf');
+        $pdf->save(storage_path('/PDF/Path.pdf'));
+        // return $pdf->stream('report.pdf');
         // return;
     }
 
