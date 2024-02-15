@@ -23,4 +23,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/auth/register', [UserController::class, 'createUser']);
 Route::post('/auth/login', [UserController::class, 'loginUser']);
 Route::get('/getUser', [UserController::class, 'getUser'])->middleware('auth:sanctum');
-Route::post('/pdf', [PdfController::class, 'generatepdf'])->middleware('auth:sanctum');
+Route::post('/pdf', [PdfController::class, 'generatepdf']);

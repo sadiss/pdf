@@ -13,7 +13,7 @@ const VERSION = '1.86';
 protected $page;               // current page number
 protected $n;                  // current object number
 protected $offsets;            // array of object offsets
-protected $buffer;             // buffer holding in-memory PDF
+protected $buffer;             // buffer holding in-memory pdf
 protected $pages;              // array containing pages
 protected $state;              // current document state
 protected $compress;           // compression flag
@@ -66,7 +66,7 @@ protected $ZoomMode;           // zoom display mode
 protected $LayoutMode;         // layout display mode
 protected $metadata;           // document properties
 protected $CreationDate;       // document creation date
-protected $PDFVersion;         // PDF version number
+protected $PDFVersion;         // pdf version number
 
 /*******************************************************************************
 *                               Public methods                                 *
@@ -161,7 +161,7 @@ function __construct($orientation='P', $unit='mm', $size='A4')
 	$this->SetCompression(true);
 	// Metadata
 	$this->metadata = array('Producer'=>'FPDF '.self::VERSION);
-	// Set default PDF version number
+	// Set default pdf version number
 	$this->PDFVersion = '1.3';
 }
 
@@ -984,7 +984,7 @@ function SetXY($x, $y)
 
 function Output($dest='', $name='', $isUTF8=false)
 {
-	// Output PDF to some destination
+	// Output pdf to some destination
 	$this->Close();
 	if(strlen($name)==1 && strlen($dest)!=1)
 	{
@@ -1044,7 +1044,7 @@ protected function _checkoutput()
 	if(PHP_SAPI!='cli')
 	{
 		if(headers_sent($file,$line))
-			$this->Error("Some data has already been output, can't send PDF file (output started at $file:$line)");
+			$this->Error("Some data has already been output, can't send pdf file (output started at $file:$line)");
 	}
 	if(ob_get_length())
 	{
@@ -1055,7 +1055,7 @@ protected function _checkoutput()
 			ob_clean();
 		}
 		else
-			$this->Error("Some data has already been output, can't send PDF file");
+			$this->Error("Some data has already been output, can't send pdf file");
 	}
 }
 
@@ -1832,7 +1832,7 @@ protected function _putxobjectdict()
 
 protected function _putresourcedict()
 {
-	$this->_put('/ProcSet [/PDF /Text /ImageB /ImageC /ImageI]');
+	$this->_put('/ProcSet [/pdf /Text /ImageB /ImageC /ImageI]');
 	$this->_put('/Font <<');
 	foreach($this->fonts as $font)
 		$this->_put('/F'.$font['i'].' '.$font['n'].' 0 R');
@@ -1885,7 +1885,7 @@ protected function _putcatalog()
 
 protected function _putheader()
 {
-	$this->_put('%PDF-'.$this->PDFVersion);
+	$this->_put('%pdf-'.$this->PDFVersion);
 }
 
 protected function _puttrailer()
