@@ -61,6 +61,13 @@
                 <div class="col-6 logo">
                     <img src="{{$data['skin']['logo_url']}}" alt="logo">
                 </div>
+                <?php
+                if(strlen($data['h_report_title']) > 40){
+                    $fontSize = 12;
+                } else {
+                    $fontSize = '20px';
+                }
+                ?>
                 <div class="col-6 h_report_title">{{$data['h_report_title']}} {{$data['dataset']['reportid']}}</div>
             </div>
         </div>
