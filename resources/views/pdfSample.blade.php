@@ -13,8 +13,10 @@
 {{--    --}}
 
     <style>
+        * { font-family: DejaVu Sans, sans-serif; line-height: 1; }
+
         @font-face {
-            font-family: 'Firefly Sung';
+            font-family: 'DejaVu Sans, sans-serif Firefly Sung';
             font-style: normal;
             font-weight: 400;
             src: url({{public_path('assets/fireflysung.ttf')}}) format('truetype');

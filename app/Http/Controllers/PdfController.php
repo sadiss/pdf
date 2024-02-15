@@ -30,7 +30,7 @@ class PdfController extends Controller
             "client_id": "47",
             "template_name": "trademark_checkup_report",
             "password": "123456789",
-            "language": "EN",
+            "language": "PL",
             "template_skin": {
               "primary_color": "#00BFBF",
               "secondary_color": "#FFFFFF",
@@ -411,7 +411,23 @@ class PdfController extends Controller
         $canvas = $pdf->getDomPDF()->getCanvas();
         $height = $canvas->get_height();
         $width = $canvas->get_width();
-        $pdf->save(storage_path('/PDF/Path.pdf'));
+
+        $rid = $data['dataset']->reportid;
+        $GLOBALS['id'] = $rid;
+        $GLOBALS['p_text'] = $data['f_page'];
+
+         $canvas->page_script(
+            '$pdf->set_opacity(1, "Multiply");
+                $current_page = $PAGE_NUM;
+                $total_pages = $PAGE_COUNT;
+                $page =  $GLOBALS["p_text"];
+                $r_no = $GLOBALS["id"];
+                $font = $fontMetrics->getFont("Helvetica", "normal");
+                $pdf->text(450, 820, "Report no. $r_no, $page $current_page / $total_pages", $font, 10, [0,191,191],0,0);
+            ');
+//        $pdf->image(public_path("assets/logo.jpeg"), 0,150, 600, 600);
+//        return $pdf->stream('report.pdf');
+        $pdf->save(storage_path("/PDF/$rid.pdf"));
         // return $pdf->stream('report.pdf');
         // return;
     }
