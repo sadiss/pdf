@@ -72,11 +72,11 @@
     <div class="container">
         <div class="row info">
             <div class="col-12">
-                <p class="meta-date">Date: {{$data['dataset']->date}}</p>
-                <p class="meta-applicant">Applicant: {{$data['dataset']->applicant}}</p>
-                <p class="meta-mark">Subjective mark: {{$data['dataset']->subjectivemark}}</p>
-                <p class="meta-classes">Classes: {{$data['dataset']->classes}}</p>
-                <p class="meta-teritory">Teritory: {{$data['dataset']->territory}}</p>
+                <p class="meta-date">{{$data['h_date']}}: {{$data['dataset']->date}}</p>
+                <p class="meta-applicant">{{$data['h_applicant']}}: {{$data['dataset']->applicant}}</p>
+                <p class="meta-mark">{{$data['h_subjectivemark']}}: {{$data['dataset']->subjectivemark}}</p>
+                <p class="meta-classes">{{$data['h_classes']}}: {{$data['dataset']->classes}}</p>
+                <p class="meta-teritory">{{$data['h_territory']}}: {{$data['dataset']->territory}}</p>
             </div>
         </div>
 
@@ -87,11 +87,11 @@
         <table class="custom-table">
             <thead class="header">
             <tr>
-                <td scope="col" style="width: 5%">Class</td>
-                <td scope="col" style="width: 15%">Identical mark(s) detected?</td>
-                <td scope="col" style="width: 15%">Similar mark(s) detected?</td>
-                <td scope="col" style="width: 15%">Illustration of registration chances*</td>
-                <td scope="col" style="width: 50%">Remarks</td>
+                <td scope="col" style="width: 5%">{{$data['dth_class']}}</td>
+                <td scope="col" style="width: 15%">{{$data['dth_identical']}}</td>
+                <td scope="col" style="width: 15%">{{$data['dth_similar']}}</td>
+                <td scope="col" style="width: 15%">{{$data['dth_illustration']}}</td>
+                <td scope="col" style="width: 50%">{{$data['dth_remarks']}}</td>
             </tr>
             </thead>
             <tbody class="tbody">
@@ -108,8 +108,8 @@
             </tr>
 
             @endforeach
-            
-           
+
+
             <tr>
                 <td scope='row' colspan="5" style="text-align: left; border-bottom: 1px black;">
                     {{$data['dataset']->summurytablefootertext}}
@@ -132,62 +132,71 @@
         <table class="custom-table1">
             <tbody>
             <tr>
-                <td scope="col" class="col1 bggray">Teritory</td>
+                <td scope="col" class="col1 bggray">{{$data['sth_territory']}}</td>
                 <td scope="col" colspan="2" class="col2 bgwhite">{{$row->territory}}</td>
-                <td scope="col" class="col1 bggray">Image</td>
+                <td scope="col" class="col1 bggray">{{$data['sth_image']}} </td>
             </tr>
             <tr>
-                <td scope="col" class="col1 h23 bggray">Mark</td>
+                <td scope="col" class="col1 h23 bggray">{{$data['sth_mark']}}</td>
                 <td scope="col" colspan="2" class="col2 h23 bgwhite">{{$row->mark}}</td>
                 <td scope="col" rowspan="10" class="col3 bg-image" style="
                 background: url({{$row->imageurl}});">
                 </td>
             </tr>
             <tr>
-                <td scope="col" class="col1 h23 bggray">Register</td>
+                <td scope="col" class="col1 h23 bggray">{{$data['sth_register']}}</td>
                 <td scope="col" colspan="2" class="col2  h23 bgwhite">{{$row->register}}</td>
             </tr>
             <tr>
-                <td scope="col" class="col1 bggray">Class</td>
+                <td scope="col" class="col1 bggray">{{$data['sth_class']}}</td>
                 <td scope="col" colspan="2" class="col2 h23 bgwhite">{{$row->class}}</td>
             </tr>
             <tr>
-                <td scope="col" class="col1 h23 bggray">Status</td>
+                <td scope="col" class="col1 h23 bggray">{{$data['sth_status']}}</td>
                 <td scope="col" colspan="2" class="col2 h23 bgwhite">{{$row->status}}</td>
             </tr>
             <tr>
-                <td scope="col" class="col1 h23 bggray">Mark owner</td>
+                <td scope="col" class="col1 h23 bggray">{{$data['sth_markowner']}}</td>
                 <td scope="col" colspan="2" class="col2 h23  bgwhite chienese">{{$row->markowner}}</td>
             </tr>
             <tr>
-                <td scope="col" class="col1 bggray">Is mark owner individual person?</td>
+                <td scope="col" class="col1 bggray">{{$data['sth_individual']}}</td>
                 <td scope="col" colspan="2" class="col2 h23 bgwhite">{{$row->individual}}</td>
             </tr>
             <tr>
-                <td scope="col" rowspan="3" class="col1  bgwhite bg-icon" style="background: @if ($row->evaluationnumber == 1) url('{{public_path('assets/examination.png')}}')" 
+                <td scope="col" rowspan="3" class="col1  bgwhite bg-icon" style="background: @if ($row->evaluationnumber == 1) url('{{public_path('assets/examination.png')}}')"
                     @elseif ($row->evaluationnumber == 2) url('{{public_path('assets/refused.png')}}')"
                     @elseif ($row->evaluationnumber == 3) url('{{public_path('assets/publication.png')}}')"
                     @elseif ($row->evaluationnumber == 4) url('{{public_path('assets/pending cancellation or invalidation.png')}}')"
                     @elseif ($row->evaluationnumber == 5) url('{{public_path('assets/expired, cancelled or invalidated.png')}}')"
                     @elseif ($row->evaluationnumber == 6) url('{{public_path('assets/issued and active.png')}}')"
-                    @endif></td>
-                <td scope="col" class="col2 row1 bggray">Filing date</td>
+                    @endif>
+                </td>
+                <td scope="col" class="col2 row1 bggray">{{$data['sth_filingdate']}}</td>
                 <td scope="col" class="col2 row1 bgwhite">{{$row->filingdate}}</td>
             </tr>
             <tr>
-                <td scope="col" class="col2 row1 bggray">Registration start date</td>
+                <td scope="col" class="col2 row1 bggray">{{$data['sth_regstartdate']}}</td>
                 <td scope="col" class="col2 row1 bgwhite">{{$row->regstartdate}}</td>
             </tr>
             <tr>
-                <td scope="col" class="col2 row1 bggray">Registration end date</td>
+                <td scope="col" class="col2 row1 bggray">{{$data['sth_regenddate']}}</td>
                 <td scope="col" class="col2 row1 bgwhite">{{$row->regenddate}}</td>
             </tr>
             <tr>
-                <td scope="col" class="col1 row1 bggray">Evaluation</td>
-                <td scope="col" colspan="2" style="background-color: red; text-align: center; color: white;" class="col2">IDENTICAL</td>
+                <td scope="col" class="col1 row1 bggray">{{$data['sth_evaluation']}}</td>
+                <td scope="col" colspan="2" class="col2"
+                    style="background: @if ($row->evaluationnumber == 1) #F16454
+                                           @elseif ($row->evaluationnumber == 2) #FA9102
+                                           @elseif ($row->evaluationnumber == 3) #FDFB65
+                                           @elseif ($row->evaluationnumber == 4) #D4FB79
+                                           @elseif ($row->evaluationnumber == 5) #81f45a
+                                           @elseif ($row->evaluationnumber == 6) #81f45a
+                                       @endif; text-align: center; text-transform: uppercase; color:#fff;"
+                >{{$row->evaluation}}</td>
             </tr>
-            <td scope="col" class="col1 row1 bggray">Remarks</td>
-            <td scope="col" colspan="3" style="width: 80% bgwhite">{{$row->remarks}}</td>
+            <td scope="col" class="col1 row1 bggray">{{$data['dth_remarks']}}</td>
+            <td scope="col" colspan="3" style="width: 80%; background: #fff;">{{$row->remarks}}</td>
             </tr>
             </tbody>
         </table>
@@ -197,19 +206,19 @@
         @endforeach
 
         <div class="row">
-            <div class="col-12 class-7">Class-11</div>
+            <div class="col-12 class-7">{{$data['dth_class']}}-{{$data['dataset']->classes}}</div>
         </div>
-        
+
         <br>
 
         <div class="row, details-title" style="text-align: left;">
-            No same of similar mark to [xMark] was detected in class: [xClass] in territory of [xTerritory].
+            {{$data['dataset']->nosamemarktext}}
         </div>
 
         <br>
 
         <div class="row, details-title">
-            Additional information or recommendations
+            {{$data['lastpage_additional_header']}}
         </div>
 
         <br>
@@ -221,7 +230,7 @@
         <br>
 
         <div class="row, details-title">
-            Disclaimer
+            {{$data['lastpage_disclaimer_header']}}
         </div>
 
         <br>
@@ -229,41 +238,6 @@
         <div class="row, details-title" style="text-align: justify; font-size: 8;">
             {{$data['dataset']->disclaimer}}
         </div>
-
-        <div class="page-break"></div>
-
-        <table id="table9" class="custom-table9" >
-            <thead ">
-            <tr>
-                <td scope="col" colspan="2" style="border: 0; text-align: center;"><img style="width: 90px; align-items: center;" src="{{public_path('assets/1.png')}}" alt=""></td>
-            </tr>
-            <tr>
-                <td scope="col" style="width: 20px; border: 0;"><img class="tbl9img" src="{{public_path('assets/examination.png')}}" alt=""></td>
-                <td scope="col" class="tbl9text" style=" border: 0;">examination</td>
-            </tr>
-            <tr>
-                <td scope="col"  style="width: 20px; border: 0;"><img class="tbl9img" src="{{public_path('assets/refused.png')}}" alt=""></td>
-                <td scope="col" class=" tbl9text" style=" border: 0;">refused</td>
-            </tr>
-            <tr>
-                <td scope="col" class="col1" style="width: 20px; border: 0;"><img class="tbl9img" src="{{public_path('assets/publication.png')}}" alt=""></td>
-                <td scope="col" class="col1 tbl9text" style=" border: 0;">publication</td>
-            </tr>
-            <tr>
-                <td scope="col" class="col1" style="width: 20px; border: 0;"><img class="tbl9img" src="{{public_path('assets/pending cancellation or invalidation.png')}}" alt=""></td>
-                <td scope="col" class="col1 tbl9text" style=" border: 0;">pending cancellation or invalidation</td>
-            </tr>
-            <tr>
-                <td scope="col" class="col1" style="width: 20px; border: 0;"><img class="tbl9img" src="{{public_path('assets/expired, cancelled or invalidated.png')}}" alt=""></td>
-                <td scope="col" class="col1 tbl9text" style=" border: 0;">expired, cancelled or invalidated</td>
-            </tr>
-            <tr>
-                <td scope="col" class="col1" style="width: 20px; border: 0;"><img class="tbl9img" src="{{public_path('assets/issued and active.png')}}" alt=""></td>
-                <td scope="col" class="col1 tbl9text" style=" border: 0;">issued and active</td>
-            </tr>
-            </thead>
-        </table>
-
     </div>
 </main>
 

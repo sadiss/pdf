@@ -19,13 +19,13 @@ class PdfController extends Controller
 {
     public function index()
     {
-        
+
 
     }
 
     public function generatepdf(Request $request)
     {
-        
+
         $file = '{
             "client_id": "47",
             "template_name": "trademark_checkup_report",
@@ -401,11 +401,10 @@ class PdfController extends Controller
               "disclaimer": "1. Raport dotyczy wyłącznie terytorium wskazanego na początku dokumentu.\n2. Raport należy analizować wg. daty kiedy został sporządzony, co oznacza, że sytuacja w bazie znaków i wynikające z niej wnioski w kontekście przedmiotowego znaku mogą się zmienić wraz z napływem nowych wniosków do urzędu patentowego na przestrzeni czasu.\n3. Raport zawiera ocenę zdolności rejestracyjnej przedmiotowego znaku w danej klasie i nie dotyczy szacowania obecności potencjalnych znaków przeciwstawnych z innych klas. \n4. Niniejsza analiza została zrobiona w oparciu o ogólnodostępne bazy danych na danym terytorium.\n5.Opracowanie dotyczy transkrypcji słownej znaku. Jeśli zgłaszano by znak słowno-graficzny, niezależnie od niniejszej oceny, szanse na uzyskanie rejestracji zależą od oceny możliwości udzielenia ochrony znaku bazując na całej jego kompozycji. Oznacza to, że finalna decyzja urzędu patentowego może pozostawać rozbieżna od oceny szans na uzyskanie rejestracji analizowanego znaku, wynikającej z rekomendacji w niniejszej analizie. \n6.Ocena podobieństwa znaków i rekomendację przygotowano w najlepszej wierze w oparciu o doświadczenie analityka na danym terytorium, co oznacza, że jest ona subiektywna. Może ona się różnić od oceny czytającego ten raport. Finalna decyzja urzędu w kwestii udzielenia przedmiotowego znaku w danej klasie może być rozbieżna od oceny szans na uzyskanie rejestracji analizowanego znaku, wynikającej z rekomendacji w niniejszej analizie. Może wynikać również z subiektywnej oceny znaku przez przedstawiciela urzędu lub orzecznictwo danego urzędu, którego analiza nie jest objęta niniejszym opracowaniem.\n7.Analizując raport należy mieć świadomość niemożliwego do oceny ryzyka istnienia wcześniejszych zgłoszeń do ochrony identycznych lub bardzo podobnych znaków towarowych nieujawnionych w bazie w momencie sporządzania niniejszego raportu, co zmieniłoby wynik analizy zdolności rejestracyjnej oraz rekomendacje. \n8.Niniejsza analiza zdolności odróżniającej jest poglądowa a rekomendacje mają charakter jedynie poglądowy. Z uwagi wspomniane przesłanki, sporządzający nie ponosi odpowiedzialności za jakiekolwiek skutki, bezpośrednie lub pośrednie, przypadkowe lub wynikające z zastosowania zalecenia do złożenia znaku towarowego do celu ochrony.\n9.Niniejsze opracowanie nie jest poradą prawną czy rekomendacją biznesową nie należy do tak traktować"
             }
           }';
-
         $data = $this->prepareData(json_decode($file));
-
+//        echo  '<pre>'.print_r($data).'</pre>';
         $dompdf = new Dompdf();
-        
+
         $pdf = Pdf::loadView('pdfSample', ['data'=> $data])->setPaper('A4', '');
         $pdf->output();
 
@@ -417,15 +416,15 @@ class PdfController extends Controller
         // return;
     }
 
-    public function prepareData($data) 
+    public function prepareData($data)
     {
         $prep_data= [];
 
         $prep_data ['lang'] = $data->language;
         $prep_data ['skin'] = $data->template_skin;
-       
+
         $translation = $data->translations;
-        
+
         for($i = 0; $i<count($translation); $i++)
         {
             if($translation[$i]->text_language ==  $data->language)
@@ -444,5 +443,5 @@ class PdfController extends Controller
 
     }
 
-    
+
 }
